@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PapersPlease"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Papers, please" Height="720" Width="1280">
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Nueva partida" Margin="553,391,553,258" VerticalAlignment="Center" Width="166" Height="40" HorizontalAlignment="Left"/>
+        <Button Content="Cargar partida" HorizontalAlignment="Center" Margin="553,461,553,188" VerticalAlignment="Center" Width="166" Height="40"/>
+        <Button Content="Salir" HorizontalAlignment="Center" Margin="553,531,553,118" VerticalAlignment="Center" Width="166" Height="40"/>
+        <Image x:Name="logo" Margin="345,54,347,0" Source="logo.png" VerticalAlignment="Top" Width="580" Height="276" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
