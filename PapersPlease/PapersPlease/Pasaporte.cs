@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PapersPlease
@@ -9,15 +6,17 @@ namespace PapersPlease
     class Pasaporte
     {
         string nombre;
-        string apellidos;
+        string primerApellido;
+        string segundoApellido;
         string dni;
         DateTime fechaNacimiento;
 
-        public Pasaporte():this("", "", "", DateTime.Now) { }
-        public Pasaporte(string nombre, string apellidos, string dni, DateTime fechaNacimiento)
+        public Pasaporte():this("", "", "", "", DateTime.Now) { }
+        public Pasaporte(string nombre, string primerApellido, string segundoApellido, string dni, DateTime fechaNacimiento)
         {
             this.nombre = nombre;
-            this.apellidos = apellidos;
+            this.primerApellido = primerApellido;
+            this.segundoApellido = segundoApellido;
             this.dni = dni;
             this.fechaNacimiento = fechaNacimiento;
         }
@@ -31,13 +30,22 @@ namespace PapersPlease
             this.nombre = nombre;
         }
 
-        public string GetApellidos()
+        public string GetPrimerApellido()
         {
-            return apellidos;
+            return primerApellido;
         }
-        public void SetApellidos(string apellidos)
+        public void SetPrimerApellido(string primerApellido)
         {
-            this.apellidos = apellidos;
+            this.primerApellido = primerApellido;
+        }
+
+        public string GetSegundoApellido()
+        {
+            return segundoApellido;
+        }
+        public void SetSegundoApellido(string segundoApellido)
+        {
+            this.segundoApellido = segundoApellido;
         }
 
         public string GetDni()

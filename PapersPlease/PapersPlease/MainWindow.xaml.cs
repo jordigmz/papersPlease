@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace PapersPlease
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -25,9 +22,19 @@ namespace PapersPlease
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void nuevaPartida_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void cargarPartida_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
