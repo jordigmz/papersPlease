@@ -60,7 +60,7 @@ namespace PapersPlease
         {
             Pasaporte pCorrecto = new Pasaporte();
 
-            return p.CompareTo(pCorrecto);
+            return p.CompareTo(pCorrecto); // Revisar
         }
     }
 }

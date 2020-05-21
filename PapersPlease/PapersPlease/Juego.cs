@@ -28,7 +28,7 @@ namespace PapersPlease
         {
             return dia;
         }
-        public void SetPersonajesVistos(DateTime dia)
+        public void SetDia(DateTime dia)
         {
             this.dia = dia;
         }
