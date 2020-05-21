@@ -32,9 +32,9 @@ namespace PapersPlease
         {
             try
             {
-                StreamWriter fw = File.CreateText("partida.txt");
+                StreamWriter fw = File.CreateText("partida.txt"); // preguntar partida a usuario
 
-
+                //cargo nuevos
 
                 fw.Close();
             }
@@ -56,7 +56,7 @@ namespace PapersPlease
         {
             try
             {
-                StreamReader fr = File.OpenText("partida.txt");
+                StreamReader fr = File.OpenText("partidaMitad.txt"); // preguntar partida a usuario
 
 
 

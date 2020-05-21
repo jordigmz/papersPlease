@@ -13,15 +13,13 @@ namespace PapersPlease
         DateTime dia; //Convert.ToDateTime(string);
         int acumuladorDias;
         int ahorros;
-        List<string> personajesVistos;
+        List<Pasaporte> personajes;
 
-        public Juego():this(DateTime.Now, 0, 0) 
-        {
-            personajesVistos = new List<string>(); // Revisar
-        }
+        public Juego():this(DateTime.Now, 0, 0) {}
         public Juego(DateTime dia, int acumuladorDias, int ahorros)
         {
-            personajesVistos = new List<string>();
+            personajes = new List<Pasaporte>();
+
         }
 
         public DateTime GetDia()

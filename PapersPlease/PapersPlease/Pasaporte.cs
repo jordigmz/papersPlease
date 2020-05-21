@@ -6,6 +6,7 @@ namespace PapersPlease
 {
     class Pasaporte : IComparable<Pasaporte>
     {
+        string pathImagen; // Nuevo
         string nombre;
         string apellido;
         string dni;
@@ -58,9 +59,9 @@ namespace PapersPlease
 
         public int CompareTo(Pasaporte p)
         {
-            Pasaporte pCorrecto = new Pasaporte();
+            //if atributos iguales devuelve -1 if p es mayor, this es mayor devuelve 1, si son iguales 0
 
-            return p.CompareTo(pCorrecto); // Revisar
+            return 1;
         }
     }
 }
