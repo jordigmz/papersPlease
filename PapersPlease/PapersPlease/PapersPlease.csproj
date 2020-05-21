@@ -84,8 +84,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PantallaJuego.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PantallaJuego.xaml.cs">
+      <DependentUpon>PantallaJuego.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pasaporte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -126,6 +133,45 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CheckpointBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OuterBooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BoothWall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Console.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IntroTitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Desk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="News.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="p1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IdCardInner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PassportOuterKolechia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IdCardOuter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PassportInnerKolechia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="d1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

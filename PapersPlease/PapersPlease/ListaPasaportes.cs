@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Windows;
 
 namespace PapersPlease
 {
@@ -21,9 +23,81 @@ namespace PapersPlease
             this.pasaportes = pasaportes;
         }
 
-        public void Add(Pasaporte pasaporte)
+        public void Add(Pasaporte p)
         {
-            pasaportes.Add(pasaporte);
+            pasaportes.Add(p);
+        }
+
+        public void Crear()
+        {
+            try
+            {
+                StreamWriter fw = File.CreateText("partida.txt");
+
+
+
+                fw.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("No se ha encontrado el fichero.");
+            }
+            catch (PathTooLongException)
+            {
+                MessageBox.Show("El nombre del fichero es demasiado largo.");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Error en el fichero.");
+            }
+        }
+
+        public void Cargar()
+        {
+            try
+            {
+                StreamReader fr = File.OpenText("partida.txt");
+
+
+
+                fr.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("No se ha encontrado el fichero.");
+            }
+            catch (PathTooLongException)
+            {
+                MessageBox.Show("El nombre del fichero es demasiado largo.");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Error en el fichero.");
+            }
+        }
+
+        public void Guardar()
+        {
+            try
+            {
+                StreamReader fr = File.OpenText("partida.txt");
+
+
+
+                fr.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("No se ha encontrado el fichero.");
+            }
+            catch (PathTooLongException)
+            {
+                MessageBox.Show("El nombre del fichero es demasiado largo.");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Error en el fichero.");
+            }
         }
     }
 }

@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PapersPlease"
         mc:Ignorable="d"
-        Title="Papers, please" Height="720" Width="1280">
+        Title="Papers, please" Height="720" Width="1280" ResizeMode="NoResize">
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="nuevaPartida" Content="Nueva partida" Margin="553,391,553,258" VerticalAlignment="Center" Width="166" Height="40" HorizontalAlignment="Left" FontFamily="Courier New" FontSize="16" BorderBrush="{x:Null}" Background="White" Foreground="#FF3B483B" FontWeight="Bold" Click="nuevaPartida_Click"/>
-        <Button x:Name="cargarPartida" Content="Cargar partida" HorizontalAlignment="Center" Margin="553,461,553,188" VerticalAlignment="Center" Width="166" Height="40" FontFamily="Courier New" FontSize="16" BorderBrush="{x:Null}" Background="White" Foreground="#FF3B483B" FontWeight="Bold" Click="cargarPartida_Click"/>
-        <Button x:Name="salir" Content="Salir" HorizontalAlignment="Center" Margin="553,531,553,118" VerticalAlignment="Center" Width="166" Height="40" FontFamily="Courier New" FontSize="16" BorderBrush="{x:Null}" Background="White" Foreground="#FF3B483B" FontWeight="Bold" Click="salir_Click"/>
+        <Button x:Name="nuevaPartida" Content="Nueva partida" Margin="553,391,553,258" VerticalAlignment="Center" Width="166" Height="40" HorizontalAlignment="Left" FontFamily="Courier New" FontSize="16" BorderBrush="{x:Null}" Background="White" Foreground="#FF3B483B" FontWeight="Bold" Click="NuevaPartida_Click"/>
+        <Button x:Name="cargarPartida" Content="Cargar partida" HorizontalAlignment="Center" Margin="553,461,553,188" VerticalAlignment="Center" Width="166" Height="40" FontFamily="Courier New" FontSize="16" BorderBrush="{x:Null}" Background="White" Foreground="#FF3B483B" FontWeight="Bold" Click="CargarPartida_Click"/>
+        <Button x:Name="salir" Content="Salir" HorizontalAlignment="Center" Margin="553,531,553,118" VerticalAlignment="Center" Width="166" Height="40" FontFamily="Courier New" FontSize="16" BorderBrush="{x:Null}" Background="White" Foreground="#FF3B483B" FontWeight="Bold" Click="Salir_Click"/>
         <Image x:Name="logo" Margin="345,54,347,0" Source="logo.png" VerticalAlignment="Top" Width="580" Height="276" HorizontalAlignment="Center"/>
-        <Label x:Name="Autor" Content="Jorge Gómez Tortosa" HorizontalAlignment="Left" Margin="925,621,0,0" VerticalAlignment="Top" Foreground="#FF4C5C4C" Height="39" Width="251" FontFamily="Courier New" FontSize="20"/>
+        <Label x:Name="Autor" Content="Jorge Gómez Tortosa - 1º DAW" HorizontalAlignment="Left" Margin="824,621,0,0" VerticalAlignment="Top" Foreground="#FF4C5C4C" Height="39" Width="352" FontFamily="Courier New" FontSize="20"/>
+        <Frame x:Name="Main" Navigated="Main_Navigated" ></Frame>
     </Grid>
 </Window>

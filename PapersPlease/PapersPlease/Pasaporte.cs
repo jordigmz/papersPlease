@@ -1,22 +1,21 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace PapersPlease
 {
-    class Pasaporte
+    class Pasaporte : IComparable<Pasaporte>
     {
         string nombre;
-        string primerApellido;
-        string segundoApellido;
+        string apellido;
         string dni;
         DateTime fechaNacimiento;
 
-        public Pasaporte():this("", "", "", "", DateTime.Now) { }
-        public Pasaporte(string nombre, string primerApellido, string segundoApellido, string dni, DateTime fechaNacimiento)
+        public Pasaporte():this("", "", "", DateTime.Now) { }
+        public Pasaporte(string nombre, string apellido, string dni, DateTime fechaNacimiento)
         {
             this.nombre = nombre;
-            this.primerApellido = primerApellido;
-            this.segundoApellido = segundoApellido;
+            this.apellido = apellido;
             this.dni = dni;
             this.fechaNacimiento = fechaNacimiento;
         }
@@ -30,22 +29,13 @@ namespace PapersPlease
             this.nombre = nombre;
         }
 
-        public string GetPrimerApellido()
+        public string GetApellido()
         {
-            return primerApellido;
+            return apellido;
         }
-        public void SetPrimerApellido(string primerApellido)
+        public void SetApellido(string apellido)
         {
-            this.primerApellido = primerApellido;
-        }
-
-        public string GetSegundoApellido()
-        {
-            return segundoApellido;
-        }
-        public void SetSegundoApellido(string segundoApellido)
-        {
-            this.segundoApellido = segundoApellido;
+            this.apellido = apellido;
         }
 
         public string GetDni()
@@ -64,6 +54,13 @@ namespace PapersPlease
         public void GetFechaNacimiento(DateTime fechaNacimiento)
         {
             this.fechaNacimiento = fechaNacimiento;
+        }
+
+        public int CompareTo(Pasaporte p)
+        {
+            Pasaporte pCorrecto = new Pasaporte();
+
+            return p.CompareTo(pCorrecto);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,24 +18,48 @@ namespace PapersPlease
 {
     public partial class MainWindow : Window
     {
+        ListaPasaportes pasaportes;
+
         public MainWindow()
         {
             InitializeComponent();
+            pasaportes = new ListaPasaportes();
+
+            if(!File.Exists("partida.txt"))
+            {
+                cargarPartida.IsEnabled = false;
+            }
         }
 
-        private void nuevaPartida_Click(object sender, RoutedEventArgs e)
+        private void NuevaPartida_Click(object sender, RoutedEventArgs e)
         {
+            pasaportes.Crear();
 
-        }
+            PantallaJuego p = new PantallaJuego();
+            p.Show();
 
-        private void cargarPartida_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void salir_Click(object sender, RoutedEventArgs e)
-        {
             this.Close();
+        }
+
+        private void CargarPartida_Click(object sender, RoutedEventArgs e)
+        {
+            pasaportes.Cargar();
+
+            PantallaJuego p = new PantallaJuego();
+            p.Show();
+
+            this.Close();
+        }
+
+        private void Salir_Click(object sender, RoutedEventArgs e)
+        {
+            pasaportes.Guardar();
+            this.Close();
+        }
+        
+        private void Main_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }
