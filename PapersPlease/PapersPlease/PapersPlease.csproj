@@ -50,6 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -138,13 +139,7 @@
     <Resource Include="CheckpointBack.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="OuterBooth.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="BoothWall.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Console.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="IntroTitle.png" />
@@ -156,22 +151,32 @@
     <Resource Include="News.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="p1.png" />
+    <Resource Include="p1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="IdCardInner.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PassportOuterKolechia.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="IdCardOuter.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PassportInnerKolechia.png" />
+    <Resource Include="d1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="d1.png" />
+    <Resource Include="visado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="StampBotApproved.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="StampBotDenied.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

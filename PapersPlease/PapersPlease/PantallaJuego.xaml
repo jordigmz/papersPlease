@@ -14,6 +14,7 @@
         <Image Margin="0,0,-0.4,486.4" Source="CheckpointBack.png" Stretch="Fill" Grid.ColumnSpan="2"/>
         <Image Margin="0,0,-0.4,486.4" Source="News.png" Stretch="Fill" Grid.Column="1" HorizontalAlignment="Right" Width="346"/>
         <Image Margin="0,204,865.6,219.4" Source="BoothWall.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <Image x:Name="personajeImage" Grid.ColumnSpan="2" Margin="52,211,931.6,238.4" Source="p1.png" Stretch="Fill"/>
         <Image Margin="0,204,-0.4,-9.6" Source="Desk.png" Stretch="Fill" Grid.ColumnSpan="2"/>
         <Image Margin="950,105,31.6,552.4" Source="IntroTitle.png" Stretch="Fill" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
@@ -26,15 +27,13 @@
             </Image.RenderTransform>
         </Image>
         <Label Content="Día 1" Grid.Column="1" HorizontalAlignment="Left" Margin="1054,6,0,0" VerticalAlignment="Top" Height="35" Width="105" FontFamily="Courier New" FontWeight="Bold" FontSize="26" AutomationProperties.Name="diaActual" RenderTransformOrigin="0.883,0.347"/>
-        <Image Grid.ColumnSpan="2" Margin="52,209,931.6,240.4" Source="p1.png" Stretch="Fill"/>
         <Image Grid.ColumnSpan="2" Margin="444,234,523.6,281.4" Source="IdCardInner.png" Stretch="Fill"/>
-        <Image Grid.ColumnSpan="2" Margin="899,276,114.6,90.4" Source="PassportInnerKolechia.png" Stretch="Fill"/>
-        <Image Grid.ColumnSpan="2" Margin="148,499,1065.6,111.4" Source="PassportOuterKolechia.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="tipoPasImagen" Grid.ColumnSpan="2" Margin="146,494,1067.6,116.4" Source="pt1.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-20.042"/>
+                    <RotateTransform Angle="-13.945"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Image.RenderTransform>
@@ -49,16 +48,23 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image Grid.ColumnSpan="2" Margin="429,274,694.6,296.4" Source="d1.png" Stretch="Fill"/>
-        <Image Grid.ColumnSpan="2" Margin="893,459,256.6,130.4" Source="d1.png" Stretch="Fill"/>
-        <Label Grid.ColumnSpan="2" Content="Nombre" HorizontalAlignment="Left" Margin="615,284,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label Grid.ColumnSpan="2" Content="Apellido" HorizontalAlignment="Left" Margin="615,326,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label Grid.ColumnSpan="2" Content="99999999A" HorizontalAlignment="Left" Margin="615,352,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,1.313" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label Grid.ColumnSpan="2" Content="21/05/2020" HorizontalAlignment="Left" Margin="615,376,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label Grid.ColumnSpan="2" Content="Nombre" HorizontalAlignment="Left" Margin="1037,461,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label Grid.ColumnSpan="2" Content="Apellido" HorizontalAlignment="Left" Margin="1037,478,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label Grid.ColumnSpan="2" Content="99999999A" HorizontalAlignment="Left" Margin="1037,494,0,0" VerticalAlignment="Top" Width="110" Height="25" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label Grid.ColumnSpan="2" Content="21/05/2020" HorizontalAlignment="Left" Margin="1037,510,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Image x:Name="pasaporteImagen" Grid.ColumnSpan="2" Margin="431,274,692.6,296.4" Source="d1.png" Stretch="Fill"/>
+        <Label Grid.ColumnSpan="2" Content="Nombre" HorizontalAlignment="Left" Margin="607,278,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label Grid.ColumnSpan="2" Content="Apellido" HorizontalAlignment="Left" Margin="607,322,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label Grid.ColumnSpan="2" Content="99999999A" HorizontalAlignment="Left" Margin="607,346,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,1.313" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label Grid.ColumnSpan="2" Content="21/05/2020" HorizontalAlignment="Left" Margin="607,370,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
 
+        <Image Grid.ColumnSpan="2" Margin="897,276,116.6,90.4" Source="visado.png" Stretch="Fill"/>
+        <Label Grid.ColumnSpan="2" Content="Nombre" HorizontalAlignment="Left" Margin="1033,457,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label Grid.ColumnSpan="2" Content="Apellido" HorizontalAlignment="Left" Margin="1033,472,0,0" VerticalAlignment="Top" Width="110" Height="27" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label Grid.ColumnSpan="2" Content="99999999A" HorizontalAlignment="Left" Margin="1033,488,0,0" VerticalAlignment="Top" Width="110" Height="25" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label Grid.ColumnSpan="2" Content="21/05/2020" HorizontalAlignment="Left" Margin="1033,504,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Button Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="505,504,0,0" VerticalAlignment="Top" Width="76" Click="Aprobar_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0">
+            <Image Height="65" Source="StampBotApproved.png" Stretch="Fill" Width="75"/>
+        </Button>
+        <Button Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="651,504,0,0" VerticalAlignment="Top" Width="76" Click="Denegar_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0">
+            <Image Height="65" Source="StampBotDenied.png" Stretch="Fill" Width="76"/>
+        </Button>
+        <Image x:Name="visadoImagen" Grid.ColumnSpan="2" Margin="891,459,258.6,130.4" Source="d1.png" Stretch="Fill"/>
     </Grid>
 </Window>

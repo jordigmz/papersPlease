@@ -10,16 +10,30 @@ namespace PapersPlease
 {
     class Juego
     {
-        DateTime dia; //Convert.ToDateTime(string);
-        int acumuladorDias;
+        string nombreJugador;
+        int contadorDias;
         int ahorros;
+        DateTime dia; //Convert.ToDateTime(string);
         List<Pasaporte> personajes;
 
-        public Juego():this(DateTime.Now, 0, 0) {}
-        public Juego(DateTime dia, int acumuladorDias, int ahorros)
+        public Juego():this("", 0, 0, DateTime.Now) { }
+        public Juego(string nombreJugador, int contadorDias, int ahorros, DateTime dia)
         {
-            personajes = new List<Pasaporte>();
+            this.nombreJugador = nombreJugador;
+            this.contadorDias = contadorDias;
+            this.ahorros = ahorros;
+            this.dia = dia;
 
+            personajes = new List<Pasaporte>();
+        }
+
+        public string GetNombreJugador()
+        {
+            return nombreJugador;
+        }
+        public void SetNombreJugador(string nombreJugador)
+        {
+            this.nombreJugador = nombreJugador;
         }
 
         public DateTime GetDia()
@@ -33,11 +47,11 @@ namespace PapersPlease
 
         public int GetAcumuladorDias()
         {
-            return acumuladorDias;
+            return contadorDias;
         }
         public void SetAcumuladorDias(int acumuladorDias)
         {
-            this.acumuladorDias = acumuladorDias;
+            this.contadorDias = acumuladorDias;
         }
 
         public int GetAhorros()
@@ -49,13 +63,13 @@ namespace PapersPlease
             this.ahorros = ahorros;
         }
 
-        public List<string> GetPersonajesVistos()
+        public List<Pasaporte> GetPersonajes()
         {
-            return personajesVistos;
+            return personajes;
         }
-        public void SetPersonajesVistos(List<string> personajesVistos)
+        public void SetPersonajes(List<Pasaporte> personajes)
         {
-            this.personajesVistos = personajesVistos;
+            this.personajes = personajes;
         }
 
     }
