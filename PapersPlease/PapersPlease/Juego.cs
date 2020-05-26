@@ -13,7 +13,7 @@ namespace PapersPlease
         string nombreJugador;
         int contadorDias;
         int ahorros;
-        DateTime dia; //Convert.ToDateTime(string);
+        DateTime dia;
         List<Pasaporte> personajes;
 
         public Juego():this("", 0, 0, DateTime.Now) { }

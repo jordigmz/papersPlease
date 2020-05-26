@@ -120,44 +120,41 @@ namespace PapersPlease
 
                 do
                 {
-                    linea = nombresM.ReadLine();
+                    linea = nombresH.ReadLine();
                     if (linea != null)
                     {
                         nombreTemp = linea;
                     }
 
-                    linea = apellidosM.ReadLine();
+                    linea = apellidosH.ReadLine();
                     if (linea != null)
                     {
                         apellidoTemp = linea;
                     }
 
-                    linea = dniM.ReadLine();
+                    linea = dniH.ReadLine();
                     if (linea != null)
                     {
                         dniTemp = linea;
                     }
 
-                    linea = fechasNacimientoM.ReadLine();
+                    linea = fechasNacimientoH.ReadLine();
                     if (linea != null)
                     {
                         fechaNacimientoTemp = linea;
                     }
 
-                    if (linea != null)
-                    {
-                        AddHombre(new Pasaporte(
-                            Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\m\p" + cont + ".png",
-                            Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
-                            Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
-                            nombreTemp,
-                            apellidoTemp,
-                            dniTemp,
-                            Convert.ToDateTime(fechaNacimientoTemp)
-                        ));
+                    AddHombre(new Pasaporte(
+                        Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\m\p" + cont + ".png",
+                        Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
+                        Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
+                        nombreTemp,
+                        apellidoTemp,
+                        dniTemp,
+                        Convert.ToDateTime(fechaNacimientoTemp)
+                    ));
 
-                        cont++;
-                    }
+                    cont++;
 
                 } while (linea != null);
 
@@ -165,9 +162,6 @@ namespace PapersPlease
                 apellidosH.Close();
                 dniH.Close();
                 fechasNacimientoH.Close();
-
-                StreamWriter fw = File.CreateText(j.GetNombreJugador() + ".txt");
-                fw.Close();
             }
             catch (FileNotFoundException)
             {
@@ -211,11 +205,11 @@ namespace PapersPlease
         {
             try
             {
-                StreamReader fr = File.OpenText("partida.txt");
+                StreamWriter fw = File.CreateText(j.GetNombreJugador() + "_Medias.txt");
 
 
 
-                fr.Close();
+                fw.Close();
             }
             catch (FileNotFoundException)
             {
