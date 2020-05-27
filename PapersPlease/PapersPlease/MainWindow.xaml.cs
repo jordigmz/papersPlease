@@ -27,7 +27,9 @@ namespace PapersPlease
             InitializeComponent();
             pasaportes = new ListaPasaportes();
 
-            if (!File.Exists(partidas.SelectedItem + ".txt"))
+            //comprobar si exiten GetFiles() y hacer adds
+
+            if (partidas.Items.Count == 0)
             {
                 partidas.Visibility = Visibility.Hidden;
                 cargarPartida.IsEnabled = false;
@@ -50,10 +52,6 @@ namespace PapersPlease
                 partida = Interaction.InputBox("Por favor, registre la partida.", "Nombre", "", -1, -1);
 
             } while (partida == "");
-
-            partidas.Items.Add(partida);
-
-            pasaportes.Crear();
 
             PantallaJuego p = new PantallaJuego();
             p.Show();

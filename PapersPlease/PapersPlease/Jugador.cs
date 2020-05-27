@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace PapersPlease
 {
-    class Juego
+    class Jugador
     {
         string nombreJugador;
         int contadorDias;
         int ahorros;
         DateTime dia;
 
-        public Juego():this("", 0, 0, DateTime.Now) { }
-        public Juego(string nombreJugador, int contadorDias, int ahorros, DateTime dia)
+        public Jugador():this("", 0, 0, DateTime.Now) { }
+        public Jugador(string nombreJugador, int contadorDias, int ahorros, DateTime dia)
         {
             this.nombreJugador = nombreJugador;
             this.contadorDias = contadorDias;

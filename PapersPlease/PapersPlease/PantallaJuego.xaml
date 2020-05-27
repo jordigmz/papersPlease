@@ -66,5 +66,6 @@
             <Image Height="65" Source="StampBotDenied.png" Stretch="Fill" Width="76"/>
         </Button>
         <Image x:Name="visadoImagen" Grid.ColumnSpan="2" Margin="891,459,258.6,130.4" Source="d1.png" Stretch="Fill"/>
+        <Button Grid.ColumnSpan="2" Content="Salir" HorizontalAlignment="Left" Margin="1164,638,0,0" VerticalAlignment="Top" Width="76" Click="Salir_Click"/>
     </Grid>
 </Window>

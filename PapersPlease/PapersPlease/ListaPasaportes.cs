@@ -8,43 +8,29 @@ namespace PapersPlease
 {
     class ListaPasaportes
     {
-        List<Pasaporte> pasaportesMujeres;
-        List<Pasaporte> pasaportesHombres;
-        Juego j;
+        List<Pasaporte> pasaportes;
+        Jugador j;
 
         public ListaPasaportes()
         {
-            j = new Juego();
-            pasaportesMujeres = new List<Pasaporte>();
-            pasaportesHombres = new List<Pasaporte>();
-        }
-        public List<Pasaporte> GetPasaportesMujeres()
-        {
-            return pasaportesMujeres;
-        }
-        public void SetPasaportesMujeres(List<Pasaporte> pasaportesMujeres)
-        {
-            this.pasaportesMujeres = pasaportesMujeres;
+            j = new Jugador();
+            pasaportes = new List<Pasaporte>();
         }
 
-        public List<Pasaporte> GetPasaportesHombres()
+        public List<Pasaporte> GetPasaportes()
         {
-            return pasaportesHombres;
+            return pasaportes;
         }
-        public void SetPasaportesHombres(List<Pasaporte> pasaportesHombres)
+        public void SetPasaportes(List<Pasaporte> pasaportes)
         {
-            this.pasaportesHombres = pasaportesHombres;
-        }
-
-        public void AddMujer(Pasaporte pasaporte)
-        {
-            pasaportesMujeres.Add(pasaporte);
+            this.pasaportes = pasaportes;
         }
 
-        public void AddHombre(Pasaporte pasaporte)
+        public void Add(Pasaporte pasaporte)
         {
-            pasaportesHombres.Add(pasaporte);
+            pasaportes.Add(pasaporte);
         }
+
 
         public void Crear()
         {
@@ -92,7 +78,7 @@ namespace PapersPlease
                         fechaNacimientoTemp = linea;
                     }
 
-                    AddMujer(new Pasaporte(
+                    Add(new Pasaporte(
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\f\p" + cont + ".png",
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\f\d" + cont + ".png",
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\f\d" + cont + ".png",
@@ -142,7 +128,7 @@ namespace PapersPlease
                         fechaNacimientoTemp = linea;
                     }
 
-                    AddHombre(new Pasaporte(
+                    Add(new Pasaporte(
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\m\p" + cont + ".png",
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
