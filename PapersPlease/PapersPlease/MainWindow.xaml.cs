@@ -19,6 +19,7 @@ namespace PapersPlease
 {
     public partial class MainWindow : Window
     {
+        string partida;
         ListaPasaportes pasaportes;
 
         public MainWindow()
@@ -26,14 +27,32 @@ namespace PapersPlease
             InitializeComponent();
             pasaportes = new ListaPasaportes();
 
-            if(!File.Exists("partida.txt"))
+            if (!File.Exists(partidas.SelectedItem + ".txt"))
             {
+                partidas.Visibility = Visibility.Hidden;
                 cargarPartida.IsEnabled = false;
             }
         }
 
+        public string GetPartida()
+        {
+            return partida;
+        }
+        public void SetPartida(string partida)
+        {
+            this.partida = partida;
+        }
+
         private void NuevaPartida_Click(object sender, RoutedEventArgs e)
         {
+            do
+            {
+                partida = Interaction.InputBox("Por favor, registre la partida.", "Nombre", "", -1, -1);
+
+            } while (partida == "");
+
+            partidas.Items.Add(partida);
+
             pasaportes.Crear();
 
             PantallaJuego p = new PantallaJuego();
@@ -44,7 +63,7 @@ namespace PapersPlease
 
         private void CargarPartida_Click(object sender, RoutedEventArgs e)
         {
-            pasaportes.Cargar();
+            pasaportes.Cargar(partidas.SelectedItem.ToString());
 
             PantallaJuego p = new PantallaJuego();
             p.Show();
@@ -54,11 +73,12 @@ namespace PapersPlease
 
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
-            pasaportes.Guardar();
             this.Close();
         }
         
-        private void Main_Navigated(object sender, NavigationEventArgs e)
+        private void Main_Navigated(object sender, NavigationEventArgs e) { }
+
+        private void ComboBox_Partidas(object sender, SelectionChangedEventArgs e)
         {
 
         }

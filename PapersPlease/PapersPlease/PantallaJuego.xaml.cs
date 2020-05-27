@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,43 +19,78 @@ namespace PapersPlease
 {
     public partial class PantallaJuego : Window
     {
+        ListaPasaportes p;
+        List<Pasaporte> mujeres;
+        List<Pasaporte> hombres;
+        MainWindow inicio;
         Random r;
+        Random r2;
+        int aleatorio;
 
         public PantallaJuego()
         {
             InitializeComponent();
+            inicio = new MainWindow();
+            p = new ListaPasaportes();
+            mujeres = p.GetPasaportesMujeres();
+            hombres = p.GetPasaportesHombres();
+
+            r = new Random();
+            r2 = new Random();
         }
 
         private void Aprobar_Click(object sender, RoutedEventArgs e)
         {
-            this.r = new Random();
-            //personaje
-            personajeImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\"+@"m\p14.png", UriKind.Absolute));
+            p.Guardar(inicio.GetPartida());
 
-            //pasaporte
-            pasaporteImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\" + @"m\d14.png", UriKind.Absolute));
+            aleatorio = r.Next(0, mujeres.Count);
 
-            //visado
-            visadoImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\" + @"m\d14.png", UriKind.Absolute));
+            if (mujeres.Count > 0)
+            {
+                personajeImagen.Source = new BitmapImage(new Uri(mujeres[aleatorio].GetPersonajeImagen(), UriKind.Absolute));
+
+                pasaporteImagen.Source = new BitmapImage(new Uri(mujeres[aleatorio].GetPasaporteImagen(), UriKind.Absolute));
+
+                visadoImagen.Source = new BitmapImage(new Uri(mujeres[aleatorio].GetVisadoImagen(), UriKind.Absolute));
+            }
+            else if (hombres.Count > 0)
+            {
+                personajeImagen.Source = new BitmapImage(new Uri(hombres[aleatorio].GetPersonajeImagen(), UriKind.Absolute));
+
+                pasaporteImagen.Source = new BitmapImage(new Uri(hombres[aleatorio].GetPasaporteImagen(), UriKind.Absolute));
+
+                visadoImagen.Source = new BitmapImage(new Uri(hombres[aleatorio].GetVisadoImagen(), UriKind.Absolute));
+            }
 
             //tipo pasaporte
-            tipoPasImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\papers\pt" + r.Next(1, 7) + ".png", UriKind.Absolute));
+            tipoPasImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\papers\pt" + r2.Next(1, 7) + ".png", UriKind.Absolute));
         }
 
         private void Denegar_Click(object sender, RoutedEventArgs e)
         {
-            this.r = new Random();
-            //personaje
-            personajeImage.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\" + @"m\p14.png", UriKind.Absolute));
+            p.Guardar(inicio.GetPartida());
 
-            //pasaporte
-            pasaporteImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\" + @"m\d14.png", UriKind.Absolute));
+            aleatorio = r.Next(0, mujeres.Count);
 
-            //visado
-            visadoImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\" + @"m\d14.png", UriKind.Absolute));
+            if (mujeres.Count > 0)
+            {
+                personajeImagen.Source = new BitmapImage(new Uri(mujeres[aleatorio].GetPersonajeImagen(), UriKind.Absolute));
+
+                pasaporteImagen.Source = new BitmapImage(new Uri(mujeres[aleatorio].GetPasaporteImagen(), UriKind.Absolute));
+
+                visadoImagen.Source = new BitmapImage(new Uri(mujeres[aleatorio].GetVisadoImagen(), UriKind.Absolute));
+            }
+            else if (hombres.Count > 0)
+            {
+                personajeImagen.Source = new BitmapImage(new Uri(hombres[aleatorio].GetPersonajeImagen(), UriKind.Absolute));
+
+                pasaporteImagen.Source = new BitmapImage(new Uri(hombres[aleatorio].GetPasaporteImagen(), UriKind.Absolute));
+
+                visadoImagen.Source = new BitmapImage(new Uri(hombres[aleatorio].GetVisadoImagen(), UriKind.Absolute));
+            }
 
             //tipo pasaporte
-            tipoPasImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\papers\pt" + r.Next(1, 7) + ".png", UriKind.Absolute));
+            tipoPasImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\papers\pt" + r2.Next(1, 7) + ".png", UriKind.Absolute));
         }
     }
 }

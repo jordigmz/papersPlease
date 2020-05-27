@@ -14,7 +14,6 @@ namespace PapersPlease
         int contadorDias;
         int ahorros;
         DateTime dia;
-        List<Pasaporte> personajes;
 
         public Juego():this("", 0, 0, DateTime.Now) { }
         public Juego(string nombreJugador, int contadorDias, int ahorros, DateTime dia)
@@ -23,8 +22,6 @@ namespace PapersPlease
             this.contadorDias = contadorDias;
             this.ahorros = ahorros;
             this.dia = dia;
-
-            personajes = new List<Pasaporte>();
         }
 
         public string GetNombreJugador()
@@ -45,13 +42,13 @@ namespace PapersPlease
             this.dia = dia;
         }
 
-        public int GetAcumuladorDias()
+        public int GetContadorDias()
         {
             return contadorDias;
         }
-        public void SetAcumuladorDias(int acumuladorDias)
+        public void SetContadorDias(int contadorDias)
         {
-            this.contadorDias = acumuladorDias;
+            this.contadorDias = contadorDias;
         }
 
         public int GetAhorros()
@@ -62,15 +59,5 @@ namespace PapersPlease
         {
             this.ahorros = ahorros;
         }
-
-        public List<Pasaporte> GetPersonajes()
-        {
-            return personajes;
-        }
-        public void SetPersonajes(List<Pasaporte> personajes)
-        {
-            this.personajes = personajes;
-        }
-
     }
 }

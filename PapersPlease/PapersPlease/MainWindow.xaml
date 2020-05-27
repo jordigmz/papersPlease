@@ -16,5 +16,6 @@
         <Image x:Name="logo" Margin="345,54,347,0" Source="logo.png" VerticalAlignment="Top" Width="580" Height="276" HorizontalAlignment="Center"/>
         <Label x:Name="Autor" Content="Jorge Gómez Tortosa - 1º DAW" HorizontalAlignment="Left" Margin="824,621,0,0" VerticalAlignment="Top" Foreground="#FF4C5C4C" Height="39" Width="352" FontFamily="Courier New" FontSize="20"/>
         <Frame x:Name="Main" Navigated="Main_Navigated" ></Frame>
+        <ComboBox x:Name="partidas" HorizontalAlignment="Left" Margin="1056,54,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_Partidas"/>
     </Grid>
 </Window>

@@ -61,7 +61,6 @@ namespace PapersPlease
                 string linea = "", nombreTemp = "", apellidoTemp = "", dniTemp = "", fechaNacimientoTemp = "";
                 int cont = 1;
 
-                //mujeres
                 StreamReader nombresM = File.OpenText(@"imagenes\assets\text\f\nombres.txt");
                 StreamReader apellidosM = File.OpenText(@"imagenes\assets\text\f\apellidos.txt");
                 StreamReader dniM = File.OpenText(@"imagenes\assets\text\f\dni.txt");
@@ -112,7 +111,6 @@ namespace PapersPlease
                 dniM.Close();
                 fechasNacimientoM.Close();
 
-                //hombres
                 StreamReader nombresH = File.OpenText(@"imagenes\assets\text\m\nombres.txt");
                 StreamReader apellidosH = File.OpenText(@"imagenes\assets\text\m\apellidos.txt");
                 StreamReader dniH = File.OpenText(@"imagenes\assets\text\m\dni.txt");
@@ -177,13 +175,31 @@ namespace PapersPlease
             }
         }
 
-        public void Cargar()
+        public void Cargar(string partida)
         {
             try
             {
-                StreamReader fr = File.OpenText(j.GetNombreJugador() + ".txt");
+                StreamReader fr = File.OpenText(partida + ".txt");
 
+                if (fr.ReadLine() != null)
+                {
+                    j.SetNombreJugador(fr.ReadLine());
+                }
 
+                if (fr.ReadLine() != null)
+                {
+                    j.SetContadorDias(Convert.ToInt32(fr.ReadLine()));
+                }
+
+                if (fr.ReadLine() != null)
+                {
+                    j.SetAhorros(Convert.ToInt32(fr.ReadLine()));
+                }
+
+                if (fr.ReadLine() != null)
+                {
+                    j.SetDia(Convert.ToDateTime(fr.ReadLine()));
+                }
 
                 fr.Close();
             }
@@ -201,13 +217,16 @@ namespace PapersPlease
             }
         }
 
-        public void Guardar()
+        public void Guardar(string partida)
         {
             try
             {
-                StreamWriter fw = File.CreateText(j.GetNombreJugador() + "_Medias.txt");
+                StreamWriter fw = File.CreateText(partida + ".txt");
 
-
+                fw.WriteLine(j.GetNombreJugador());
+                fw.WriteLine(j.GetContadorDias());
+                fw.WriteLine(j.GetAhorros());
+                fw.WriteLine(j.GetDia());
 
                 fw.Close();
             }
