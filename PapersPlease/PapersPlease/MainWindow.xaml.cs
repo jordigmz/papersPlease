@@ -66,9 +66,9 @@ namespace PapersPlease
         {
             return partida;
         }
-        public void SetPartida(string partida)
+        public void SetPartida(string nPartida)
         {
-            this.partida = partida;
+            partida = nPartida;
         }
 
         private void NuevaPartida_Click(object sender, RoutedEventArgs e)
@@ -84,6 +84,8 @@ namespace PapersPlease
             SetPartida(partidas.SelectedItem.ToString());
 
             pasaportes.Cargar(GetPartida());
+
+            File.Delete(GetPartida()+".txt");
 
             PantallaJuego p = new PantallaJuego();
             p.Show();

@@ -42,6 +42,21 @@ namespace PapersPlease
 
             r = new Random();
         }
+        public Pantallajuego(string fichero) 
+        {
+            InitializeComponent();
+            inicio = new MainWindow();
+
+            j = new Jugador();
+
+            pasaportes = new ListaPasaportes();
+
+            pasaportes.Cargar(fichero);
+
+            listaPasaportes = pasaportes.GetPasaportes();
+
+            r = new Random();
+        }
 
         public void SiguientePersonaje()
         {
@@ -75,10 +90,7 @@ namespace PapersPlease
             }
             else
             {
-                //File.Delete(inicio.GetPartida()); Partida es nulo
-
                 MessageBox.Show("Has ganado!");
-                this.Close();
             }
         }
 

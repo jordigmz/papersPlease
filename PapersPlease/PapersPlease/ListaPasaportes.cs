@@ -175,7 +175,6 @@ namespace PapersPlease
         {
             try
             {
-                
                 StreamReader fr = File.OpenText(partida + ".txt");
 
                 string linea = fr.ReadLine();
