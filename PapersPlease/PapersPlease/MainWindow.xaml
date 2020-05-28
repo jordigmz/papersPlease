@@ -16,6 +16,13 @@
         <Image x:Name="logo" Margin="345,54,347,0" Source="logo.png" VerticalAlignment="Top" Width="580" Height="276" HorizontalAlignment="Center"/>
         <Label x:Name="Autor" Content="Jorge Gómez Tortosa - 1º DAW" HorizontalAlignment="Left" Margin="824,621,0,0" VerticalAlignment="Top" Foreground="#FF4C5C4C" Height="39" Width="352" FontFamily="Courier New" FontSize="20"/>
         <Frame x:Name="Main" Navigated="Main_Navigated" ></Frame>
-        <ComboBox x:Name="partidas" HorizontalAlignment="Left" Margin="1056,54,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_Partidas"/>
+        <ComboBox x:Name="partidas" HorizontalAlignment="Center" Margin="997,54,97.6,598.4" VerticalAlignment="Center" Width="180" SelectionChanged="ComboBox_Partidas" BorderBrush="{x:Null}" Foreground="#FF4C5C4C" FontFamily="Courier New" FontSize="14" FontWeight="Bold" Height="38" Padding="12,12,5,0" Grid.IsSharedSizeScope="True" ScrollViewer.CanContentScroll="True">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
     </Grid>
 </Window>

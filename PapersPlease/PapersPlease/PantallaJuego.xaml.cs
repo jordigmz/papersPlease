@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.VisualBasic;
 
 namespace PapersPlease
 {
@@ -22,6 +23,7 @@ namespace PapersPlease
         ListaPasaportes pasaportes;
         List<Pasaporte> listaPasaportes;
         MainWindow inicio;
+        Jugador j;
         Random r;
         int aleatorio;
 
@@ -30,7 +32,10 @@ namespace PapersPlease
             InitializeComponent();
             inicio = new MainWindow();
 
+            j = new Jugador();
+
             pasaportes = new ListaPasaportes();
+
             pasaportes.Crear();
 
             listaPasaportes = pasaportes.GetPasaportes();
@@ -38,52 +43,68 @@ namespace PapersPlease
             r = new Random();
         }
 
-        //hacer función siguiente
-
-        private void Aprobar_Click(object sender, RoutedEventArgs e)
+        public void SiguientePersonaje()
         {
-            pasaportes.Guardar(inicio.GetPartida());
-
-            aleatorio = r.Next(0, listaPasaportes.Count);
-
             if (listaPasaportes.Count > 0)
             {
+                aleatorio = r.Next(0, listaPasaportes.Count);
+
                 personajeImagen.Source = new BitmapImage(new Uri(listaPasaportes[aleatorio].GetPersonajeImagen(), UriKind.Absolute));
 
                 pasaporteImagen.Source = new BitmapImage(new Uri(listaPasaportes[aleatorio].GetPasaporteImagen(), UriKind.Absolute));
 
                 visadoImagen.Source = new BitmapImage(new Uri(listaPasaportes[aleatorio].GetVisadoImagen(), UriKind.Absolute));
 
-                listaPasaportes.RemoveAt(aleatorio);
-            }
+                nombreCorrecto.Content = listaPasaportes[aleatorio].GetNombre();
 
-            //tipo pasaporte
-            tipoPasImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\papers\pt" + r.Next(1, 7) + ".png", UriKind.Absolute));
+                apellidoCorrecto.Content = listaPasaportes[aleatorio].GetApellido();
+
+                dniCorrecto.Content = listaPasaportes[aleatorio].GetDni();
+
+                fechaNCorrecto.Content = listaPasaportes[aleatorio].GetFechaNacimiento().ToString().Substring(0, listaPasaportes[aleatorio].GetFechaNacimiento().ToString().Length-8);
+
+                nombreError.Content = listaPasaportes[aleatorio].GetNombre();
+
+                apellidoError.Content = listaPasaportes[aleatorio].GetApellido();
+
+                dniError.Content = listaPasaportes[aleatorio].GetDni();
+
+                fechaNError.Content = listaPasaportes[aleatorio].GetFechaNacimiento().ToString().Substring(0, listaPasaportes[aleatorio].GetFechaNacimiento().ToString().Length - 8);
+
+                tipoPasImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\papers\pt" + r.Next(1, 7) + ".png", UriKind.Absolute));
+            }
+            else
+            {
+                File.Delete(inicio.GetPartida());
+
+                MessageBox.Show("Has ganado!");
+                this.Close();
+            }
+        }
+
+        private void Aprobar_Click(object sender, RoutedEventArgs e)
+        {
+            j.Amonestar(0 , listaPasaportes[aleatorio], listaPasaportes[aleatorio]);
+
+            listaPasaportes.RemoveAt(aleatorio);
+
+            SiguientePersonaje();
         }
 
         private void Denegar_Click(object sender, RoutedEventArgs e)
         {
-            pasaportes.Guardar(inicio.GetPartida());
+            j.Amonestar(1, listaPasaportes[aleatorio], new Pasaporte("", "", "", "", "", "", DateTime.Now));
 
-            aleatorio = r.Next(0, listaPasaportes.Count);
+            listaPasaportes.RemoveAt(aleatorio);
 
-            if (listaPasaportes.Count > 0)
-            {
-                personajeImagen.Source = new BitmapImage(new Uri(listaPasaportes[aleatorio].GetPersonajeImagen(), UriKind.Absolute));
-
-                pasaporteImagen.Source = new BitmapImage(new Uri(listaPasaportes[aleatorio].GetPasaporteImagen(), UriKind.Absolute));
-
-                visadoImagen.Source = new BitmapImage(new Uri(listaPasaportes[aleatorio].GetVisadoImagen(), UriKind.Absolute));
-
-                listaPasaportes.RemoveAt(aleatorio);
-            }
-            //tipo pasaporte
-            tipoPasImagen.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\imagenes\assets\papers\pt" + r.Next(1, 7) + ".png", UriKind.Absolute));
+            SiguientePersonaje();
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
-            //Guardar
+            pasaportes.Guardar(inicio.GetPartida());
+
+            this.Close();
         }
     }
 }

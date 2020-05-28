@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using System.Windows.Media.Animation;
 using Microsoft.VisualBasic;
 
 namespace PapersPlease
@@ -36,14 +37,17 @@ namespace PapersPlease
         {
             try
             {
-                do
+                if (j.GetNombreJugador() == "")
                 {
-                    j.SetNombreJugador(Interaction.InputBox("Por favor, inserte un alias.", "Nombre", "", -1, -1));
+                    do
+                    {
+                        j.SetNombreJugador(Interaction.InputBox("Por favor, inserte un alias.", "Nombre", "", -1, -1));
 
-                } while (j.GetNombreJugador() == "");
+                    } while (j.GetNombreJugador() == "");
 
-                MessageBox.Show("Bienvenid@ " + j.GetNombreJugador() + "!");
-
+                    MessageBox.Show("Bienvenid@ " + j.GetNombreJugador() + "!");
+                }
+                
                 string linea = "", nombreTemp = "", apellidoTemp = "", dniTemp = "", fechaNacimientoTemp = "";
                 int cont = 1;
 
@@ -78,17 +82,20 @@ namespace PapersPlease
                         fechaNacimientoTemp = linea;
                     }
 
-                    Add(new Pasaporte(
-                        Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\f\p" + cont + ".png",
-                        Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\f\d" + cont + ".png",
-                        Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\f\d" + cont + ".png",
-                        nombreTemp,
-                        apellidoTemp,
-                        dniTemp,
-                        Convert.ToDateTime(fechaNacimientoTemp)
-                    ));
+                    if (linea != null)
+                    {
+                        Add(new Pasaporte(
+                            Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\f\p" + cont + ".png",
+                            Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\f\d" + cont + ".png",
+                            Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\f\d" + cont + ".png",
+                            nombreTemp,
+                            apellidoTemp,
+                            dniTemp,
+                            Convert.ToDateTime(fechaNacimientoTemp)
+                        ));
 
-                    cont++;
+                        cont++;
+                    }
 
                 } while (linea != null);
 
@@ -128,7 +135,9 @@ namespace PapersPlease
                         fechaNacimientoTemp = linea;
                     }
 
-                    Add(new Pasaporte(
+                    if (linea != null)
+                    {
+                        Add(new Pasaporte(
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\m\p" + cont + ".png",
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
@@ -138,8 +147,9 @@ namespace PapersPlease
                         Convert.ToDateTime(fechaNacimientoTemp)
                     ));
 
-                    cont++;
-
+                        cont++;
+                    }
+                    
                 } while (linea != null);
 
                 nombresH.Close();
@@ -165,26 +175,31 @@ namespace PapersPlease
         {
             try
             {
+                
                 StreamReader fr = File.OpenText(partida + ".txt");
 
-                if (fr.ReadLine() != null)
+                string linea = fr.ReadLine();
+                if (linea != null)
                 {
-                    j.SetNombreJugador(fr.ReadLine());
+                    j.SetNombreJugador(linea);
                 }
 
-                if (fr.ReadLine() != null)
+                linea = fr.ReadLine();
+                if (linea != null)
                 {
-                    j.SetContadorDias(Convert.ToInt32(fr.ReadLine()));
+                    j.SetContadorDias(Convert.ToInt32(linea));
                 }
 
-                if (fr.ReadLine() != null)
+                linea = fr.ReadLine();
+                if (linea != null)
                 {
-                    j.SetAhorros(Convert.ToInt32(fr.ReadLine()));
+                    j.SetAhorros(Convert.ToInt32(linea));
                 }
 
-                if (fr.ReadLine() != null)
+                linea = fr.ReadLine();
+                if (linea != null)
                 {
-                    j.SetDia(Convert.ToDateTime(fr.ReadLine()));
+                    j.SetDia(Convert.ToDateTime(linea));
                 }
 
                 fr.Close();
@@ -207,6 +222,12 @@ namespace PapersPlease
         {
             try
             {
+                do
+                {
+                    partida = Interaction.InputBox("Por favor, registre la partida.", "Nombre", "", -1, -1);
+
+                } while (partida == "");
+
                 StreamWriter fw = File.CreateText(partida + ".txt");
 
                 fw.WriteLine(j.GetNombreJugador());

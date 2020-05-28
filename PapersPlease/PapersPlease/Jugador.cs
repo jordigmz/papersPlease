@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PapersPlease
 {
@@ -14,14 +15,16 @@ namespace PapersPlease
         int contadorDias;
         int ahorros;
         DateTime dia;
+        Pasaporte p;
 
-        public Jugador():this("", 0, 0, DateTime.Now) { }
+        public Jugador():this("", 0, 20, DateTime.Now) { }
         public Jugador(string nombreJugador, int contadorDias, int ahorros, DateTime dia)
         {
             this.nombreJugador = nombreJugador;
             this.contadorDias = contadorDias;
             this.ahorros = ahorros;
             this.dia = dia;
+            p = new Pasaporte();
         }
 
         public string GetNombreJugador()
@@ -58,6 +61,15 @@ namespace PapersPlease
         public void SetAhorros(int ahorros)
         {
             this.ahorros = ahorros;
+        }
+
+        public void Amonestar(int jugadorResultado, Pasaporte pCorrecto, Pasaporte pError)
+        {
+            if (p.CompareTo(pCorrecto, pError) != jugadorResultado)
+            {
+                ahorros -= 5;
+                MessageBox.Show("Amonestación por mala gestión. (-5$)");
+            }
         }
     }
 }

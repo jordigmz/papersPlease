@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace PapersPlease
 {
-    class Pasaporte : IComparable<Pasaporte>
+    class Pasaporte
     {
         string personajeImagen;
         string pasaporteImagen;
@@ -89,15 +89,15 @@ namespace PapersPlease
             this.fechaNacimiento = fechaNacimiento;
         }
 
-        public int CompareTo(Pasaporte p)
+        public int CompareTo(Pasaporte pCorrecto, Pasaporte pError)
         {
-            if (p.GetPersonajeImagen().CompareTo(this.GetPersonajeImagen()) == 0 &&
-                p.GetPasaporteImagen().CompareTo(this.GetPasaporteImagen()) == 0 &&
-                p.GetVisadoImagen().CompareTo(this.GetVisadoImagen()) == 0 &&
-                p.GetNombre().CompareTo(this.GetNombre()) == 0 &&
-                p.GetApellido().CompareTo(this.GetApellido()) == 0 &&
-                p.GetDni().CompareTo(this.GetDni()) == 0 &&
-                p.GetFechaNacimiento().CompareTo(this.GetFechaNacimiento()) == 0)
+            if (pCorrecto.GetPersonajeImagen().CompareTo(pError.GetPersonajeImagen()) == 0 &&
+                pCorrecto.GetPasaporteImagen().CompareTo(pError.GetPasaporteImagen()) == 0 &&
+                pCorrecto.GetVisadoImagen().CompareTo(pError.GetVisadoImagen()) == 0 &&
+                pCorrecto.GetNombre().CompareTo(pError.GetNombre()) == 0 &&
+                pCorrecto.GetApellido().CompareTo(pError.GetApellido()) == 0 &&
+                pCorrecto.GetDni().CompareTo(pError.GetDni()) == 0 &&
+                pCorrecto.GetFechaNacimiento().CompareTo(pError.GetFechaNacimiento()) == 0)
             {
                 return 0;
             }

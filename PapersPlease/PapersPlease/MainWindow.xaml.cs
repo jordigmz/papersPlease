@@ -19,15 +19,38 @@ namespace PapersPlease
 {
     public partial class MainWindow : Window
     {
-        string partida;
         ListaPasaportes pasaportes;
+        DirectoryInfo dir;
+        FileInfo[] infoFicheros;
+        string partida;
+        string ultimaPartida;
+        DateTime mayor;
 
         public MainWindow()
         {
             InitializeComponent();
             pasaportes = new ListaPasaportes();
 
-            //comprobar si exiten GetFiles() y hacer adds
+            dir = new DirectoryInfo(Environment.CurrentDirectory);
+            infoFicheros = dir.GetFiles();
+
+            mayor = Convert.ToDateTime("01/01/1111 0:00:00");
+
+            foreach (FileInfo infoUnFich in infoFicheros)
+            {
+                if (infoUnFich.Name.Contains(".txt"))
+                {
+                    partidas.Items.Add(infoUnFich.Name.Substring(0, infoUnFich.Name.Length - 4));
+
+                    if(infoUnFich.CreationTime > mayor)
+                    {
+                        mayor = infoUnFich.CreationTime;
+                        ultimaPartida = infoUnFich.Name;
+                    }
+                }
+            }
+
+            partidas.SelectedItem = ultimaPartida.Substring(0, ultimaPartida.Length-4);
 
             if (partidas.Items.Count == 0)
             {
@@ -47,12 +70,6 @@ namespace PapersPlease
 
         private void NuevaPartida_Click(object sender, RoutedEventArgs e)
         {
-            do
-            {
-                partida = Interaction.InputBox("Por favor, registre la partida.", "Nombre", "", -1, -1);
-
-            } while (partida == "");
-
             PantallaJuego p = new PantallaJuego();
             p.Show();
 
@@ -61,7 +78,9 @@ namespace PapersPlease
 
         private void CargarPartida_Click(object sender, RoutedEventArgs e)
         {
-            pasaportes.Cargar(partidas.SelectedItem.ToString());
+            SetPartida(partidas.SelectedItem.ToString());
+
+            pasaportes.Cargar(GetPartida());
 
             PantallaJuego p = new PantallaJuego();
             p.Show();
@@ -76,9 +95,6 @@ namespace PapersPlease
         
         private void Main_Navigated(object sender, NavigationEventArgs e) { }
 
-        private void ComboBox_Partidas(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        private void ComboBox_Partidas(object sender, SelectionChangedEventArgs e) { }
     }
 }
