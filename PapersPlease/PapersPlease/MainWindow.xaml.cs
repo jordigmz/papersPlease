@@ -35,6 +35,7 @@ namespace PapersPlease
             infoFicheros = dir.GetFiles();
 
             mayor = Convert.ToDateTime("01/01/1111 0:00:00");
+            ultimaPartida = "";
 
             foreach (FileInfo infoUnFich in infoFicheros)
             {
@@ -50,12 +51,14 @@ namespace PapersPlease
                 }
             }
 
-            partidas.SelectedItem = ultimaPartida.Substring(0, ultimaPartida.Length-4);
-
             if (partidas.Items.Count == 0)
             {
                 partidas.Visibility = Visibility.Hidden;
                 cargarPartida.IsEnabled = false;
+            }
+            else
+            {
+                partidas.SelectedItem = ultimaPartida.Substring(0, ultimaPartida.Length - 4);
             }
         }
 

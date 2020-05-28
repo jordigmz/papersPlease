@@ -75,7 +75,7 @@ namespace PapersPlease
             }
             else
             {
-                File.Delete(inicio.GetPartida());
+                //File.Delete(inicio.GetPartida()); Partida es nulo
 
                 MessageBox.Show("Has ganado!");
                 this.Close();
