@@ -89,7 +89,7 @@ namespace PapersPlease
             this.fechaNacimiento = fechaNacimiento;
         }
 
-        public int Compare(Pasaporte pCorrecto, Pasaporte pError)
+        public int CompararPasaportes(Pasaporte pCorrecto, Pasaporte pError)
         {
             if (pCorrecto.GetPersonajeImagen().CompareTo(pError.GetPersonajeImagen()) == 0 &&
                 pCorrecto.GetPasaporteImagen().CompareTo(pError.GetPasaporteImagen()) == 0 &&

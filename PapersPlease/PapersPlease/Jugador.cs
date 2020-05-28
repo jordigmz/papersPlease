@@ -65,7 +65,7 @@ namespace PapersPlease
 
         public void Amonestar(int jugadorResultado, Pasaporte pCorrecto, Pasaporte pError)
         {
-            if (p.Compare(pCorrecto, pError) != jugadorResultado)
+            if (p.CompararPasaportes(pCorrecto, pError) != jugadorResultado)
             {
                 ahorros -= 5;
                 MessageBox.Show("Amonestación por mala gestión. (-5$)");

@@ -10,12 +10,14 @@ namespace PapersPlease
     class ListaPasaportes
     {
         List<Pasaporte> pasaportes;
+        List<Pasaporte> pasaportesErroneos;
         Jugador j;
 
         public ListaPasaportes()
         {
             j = new Jugador();
             pasaportes = new List<Pasaporte>();
+            pasaportesErroneos = new List<Pasaporte>();
         }
 
         public List<Pasaporte> GetPasaportes()
@@ -27,10 +29,24 @@ namespace PapersPlease
             this.pasaportes = pasaportes;
         }
 
-        public void Add(Pasaporte pasaporte)
+        public List<Pasaporte> GetPasaportesErroneos()
+        {
+            return pasaportes;
+        }
+        public void SetPasaportesErroneos(List<Pasaporte> pasaportes)
+        {
+            this.pasaportes = pasaportes;
+        }
+
+        public void AddCorrecto(Pasaporte pasaporte)
         {
             pasaportes.Add(pasaporte);
         }
+        public void AddErroneo(Pasaporte pasaporte)
+        {
+            pasaportesErroneos.Add(pasaporte);
+        }
+
 
 
         public void Crear()
@@ -49,7 +65,7 @@ namespace PapersPlease
                 }
                 
                 string linea = "", nombreTemp = "", apellidoTemp = "", dniTemp = "", fechaNacimientoTemp = "";
-                int cont = 1;
+                int cont = 1, cont2=1;
 
                 StreamReader nombresM = File.OpenText(@"imagenes\assets\text\f\nombres.txt");
                 StreamReader apellidosM = File.OpenText(@"imagenes\assets\text\f\apellidos.txt");
@@ -84,7 +100,7 @@ namespace PapersPlease
 
                     if (linea != null)
                     {
-                        Add(new Pasaporte(
+                        AddCorrecto(new Pasaporte(
                             Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\f\p" + cont + ".png",
                             Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\f\d" + cont + ".png",
                             Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\f\d" + cont + ".png",
@@ -137,7 +153,7 @@ namespace PapersPlease
 
                     if (linea != null)
                     {
-                        Add(new Pasaporte(
+                        AddCorrecto(new Pasaporte(
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\m\p" + cont + ".png",
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
                         Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont + ".png",
@@ -150,6 +166,59 @@ namespace PapersPlease
                         cont++;
                     }
                     
+                } while (linea != null);
+
+                nombresH.Close();
+                apellidosH.Close();
+                dniH.Close();
+                fechasNacimientoH.Close();
+
+                StreamReader nombresE = File.OpenText(@"imagenes\assets\text\error\nombres.txt");
+                StreamReader apellidosE = File.OpenText(@"imagenes\assets\text\error\apellidos.txt");
+                StreamReader dniE = File.OpenText(@"imagenes\assets\text\error\dni.txt");
+                StreamReader fechasNacimientoE = File.OpenText(@"imagenes\assets\text\error\fechasNacimiento.txt");
+
+                do
+                {
+                    linea = nombresE.ReadLine();
+                    if (linea != null)
+                    {
+                        nombreTemp = linea;
+                    }
+
+                    linea = apellidosE.ReadLine();
+                    if (linea != null)
+                    {
+                        apellidoTemp = linea;
+                    }
+
+                    linea = dniE.ReadLine();
+                    if (linea != null)
+                    {
+                        dniTemp = linea;
+                    }
+
+                    linea = fechasNacimientoE.ReadLine();
+                    if (linea != null)
+                    {
+                        fechaNacimientoTemp = linea;
+                    }
+
+                    if (linea != null)
+                    {
+                        AddErroneo(new Pasaporte(
+                        Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\m\p" + cont2 + ".png",
+                        Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont2 + ".png",
+                        Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\m\d" + cont2 + ".png",
+                        nombreTemp,
+                        apellidoTemp,
+                        dniTemp,
+                        Convert.ToDateTime(fechaNacimientoTemp)
+                    ));
+
+                        cont2++;
+                    }
+
                 } while (linea != null);
 
                 nombresH.Close();

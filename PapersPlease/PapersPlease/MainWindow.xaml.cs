@@ -19,7 +19,7 @@ namespace PapersPlease
 {
     public partial class MainWindow : Window
     {
-        ListaPasaportes pasaportes;
+        ListaPasaportes p;
         DirectoryInfo dir;
         FileInfo[] infoFicheros;
         string partida;
@@ -29,7 +29,7 @@ namespace PapersPlease
         public MainWindow()
         {
             InitializeComponent();
-            pasaportes = new ListaPasaportes();
+            p = new ListaPasaportes();
 
             dir = new DirectoryInfo(Environment.CurrentDirectory);
             infoFicheros = dir.GetFiles();
@@ -83,7 +83,7 @@ namespace PapersPlease
         {
             SetPartida(partidas.SelectedItem.ToString());
 
-            pasaportes.Cargar(GetPartida());
+            this.p.Cargar(GetPartida());
 
             File.Delete(GetPartida()+".txt");
 
