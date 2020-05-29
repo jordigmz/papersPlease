@@ -14,17 +14,17 @@ namespace PapersPlease
         string nombreJugador;
         int contadorDias;
         int ahorros;
-        DateTime dia;
         Pasaporte p;
+        bool perdido;
 
-        public Jugador():this("", 0, 20, DateTime.Now) { }
-        public Jugador(string nombreJugador, int contadorDias, int ahorros, DateTime dia)
+        public Jugador():this("", 1, 20) { }
+        public Jugador(string nombreJugador, int contadorDias, int ahorros)
         {
             this.nombreJugador = nombreJugador;
             this.contadorDias = contadorDias;
             this.ahorros = ahorros;
-            this.dia = dia;
             p = new Pasaporte();
+            perdido = false;
         }
 
         public string GetNombreJugador()
@@ -34,15 +34,6 @@ namespace PapersPlease
         public void SetNombreJugador(string nombreJugador)
         {
             this.nombreJugador = nombreJugador;
-        }
-
-        public DateTime GetDia()
-        {
-            return dia;
-        }
-        public void SetDia(DateTime dia)
-        {
-            this.dia = dia;
         }
 
         public int GetContadorDias()
@@ -63,12 +54,27 @@ namespace PapersPlease
             this.ahorros = ahorros;
         }
 
+        public bool GetPerdido()
+        {
+            return perdido;
+        }
+        public void SetPerdido(bool perdido)
+        {
+            this.perdido = perdido;
+        }
+
         public void Amonestar(int jugadorResultado, Pasaporte pCorrecto, Pasaporte pError)
         {
             if (p.CompararPasaportes(pCorrecto, pError) != jugadorResultado)
             {
-                ahorros -= 5;
-                MessageBox.Show("Amonestación por mala gestión. (-5$)");
+                SetAhorros(GetAhorros()-5);
+                MessageBox.Show("Nota: Amonestación por mala gestión. (-5$)");
+            }
+            
+            if (GetAhorros() <= 0)
+            {
+                MessageBox.Show("Lo siento, has perdido!");
+                SetPerdido(true);
             }
         }
     }

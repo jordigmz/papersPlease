@@ -26,7 +26,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Label Content="Día 1 (20$)" Grid.Column="1" HorizontalAlignment="Left" Margin="1009,4,0,0" VerticalAlignment="Top" Height="35" Width="182" FontFamily="Courier New" FontWeight="Bold" FontSize="26" AutomationProperties.Name="diaActual" RenderTransformOrigin="0.883,0.347"/>
+        <Label x:Name="news" Content="Día 1 (20$)" Grid.Column="1" HorizontalAlignment="Left" Margin="1009,4,0,0" VerticalAlignment="Top" Height="35" Width="182" FontFamily="Courier New" FontWeight="Bold" FontSize="26" AutomationProperties.Name="diaActual" RenderTransformOrigin="0.883,0.347"/>
         <Image Grid.ColumnSpan="2" Margin="444,234,523.6,281.4" Source="IdCardInner.png" Stretch="Fill"/>
         <Image x:Name="tipoPasImagen" Grid.ColumnSpan="2" Margin="146,494,1067.6,116.4" Source="pt1.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
@@ -48,24 +48,24 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="pasaporteImagen" Grid.ColumnSpan="2" Margin="431,274,692.6,296.4" Source="d1.png" Stretch="Fill"/>
-        <Label x:Name="nombreCorrecto" Grid.ColumnSpan="2" Content="Nombre" HorizontalAlignment="Left" Margin="607,278,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="apellidoCorrecto" Grid.ColumnSpan="2" Content="Apellido" HorizontalAlignment="Left" Margin="607,322,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="dniCorrecto" Grid.ColumnSpan="2" Content="99999999A" HorizontalAlignment="Left" Margin="607,346,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,1.313" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="fechaNCorrecto" Grid.ColumnSpan="2" Content="21/05/2020" HorizontalAlignment="Left" Margin="607,370,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Image x:Name="pasaporteImagen" Grid.ColumnSpan="2" Margin="441,288,703.6,296.4" Source="d1.png" Stretch="Fill"/>
+        <Label x:Name="nombreCorrecto" Grid.ColumnSpan="2" Content="Grace" HorizontalAlignment="Left" Margin="607,278,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="apellidoCorrecto" Grid.ColumnSpan="2" Content="Arianiti" HorizontalAlignment="Left" Margin="607,322,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="dniCorrecto" Grid.ColumnSpan="2" Content="10630273H" HorizontalAlignment="Left" Margin="607,346,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,1.313" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="fechaNCorrecto" Grid.ColumnSpan="2" Content="17/11/1999" HorizontalAlignment="Left" Margin="607,370,0,0" VerticalAlignment="Top" Width="120" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
 
         <Image Grid.ColumnSpan="2" Margin="897,276,116.6,90.4" Source="visado.png" Stretch="Fill"/>
-        <Label x:Name="nombreError" Grid.ColumnSpan="2" Content="Nombre" HorizontalAlignment="Left" Margin="1033,457,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="apellidoError" Grid.ColumnSpan="2" Content="Apellido" HorizontalAlignment="Left" Margin="1033,472,0,0" VerticalAlignment="Top" Width="110" Height="27" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="dniError" Grid.ColumnSpan="2" Content="99999999A" HorizontalAlignment="Left" Margin="1033,488,0,0" VerticalAlignment="Top" Width="110" Height="25" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
-        <Label x:Name="fechaNError" Grid.ColumnSpan="2" Content="21/05/2020" HorizontalAlignment="Left" Margin="1033,504,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="nombreError" Grid.ColumnSpan="2" Content="Grace" HorizontalAlignment="Left" Margin="1033,457,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="apellidoError" Grid.ColumnSpan="2" Content="Arianiti" HorizontalAlignment="Left" Margin="1033,472,0,0" VerticalAlignment="Top" Width="110" Height="27" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="dniError" Grid.ColumnSpan="2" Content="10630273H" HorizontalAlignment="Left" Margin="1033,488,0,0" VerticalAlignment="Top" Width="110" Height="25" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="fechaNError" Grid.ColumnSpan="2" Content="17/11/1999" HorizontalAlignment="Left" Margin="1033,504,0,0" VerticalAlignment="Top" Width="110" Height="26" FontFamily="Courier New" FontSize="13" FontWeight="Bold"/>
         <Button Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="505,504,0,0" VerticalAlignment="Top" Width="114" Click="Aprobar_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0">
             <Image Height="97" Source="StampBotApproved.png" Stretch="Fill" Width="114"/>
         </Button>
         <Button Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="701,504,0,0" VerticalAlignment="Top" Width="114" Click="Denegar_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0">
             <Image Height="97" Source="StampBotDenied.png" Stretch="Fill" Width="114"/>
         </Button>
-        <Image x:Name="visadoImagen" Grid.ColumnSpan="2" Margin="891,459,258.6,130.4" Source="d1.png" Stretch="Fill"/>
+        <Image x:Name="visadoImagen" Grid.ColumnSpan="2" Margin="897,465,262.6,130.4" Source="d1.png" Stretch="Fill" RenderTransformOrigin="0.553,0.6"/>
         <Button Grid.ColumnSpan="2" Content="Guardar y Salir" HorizontalAlignment="Left" Margin="1033,634,0,0" VerticalAlignment="Top" Width="201" Click="Salir_Click" BorderBrush="{x:Null}" Background="White" Foreground="#FF4C5C4C" FontFamily="Courier New" FontSize="18" FontWeight="Bold" Height="30"/>
     </Grid>
 </Window>

@@ -84,7 +84,7 @@ namespace PapersPlease
         {
             return fechaNacimiento;
         }
-        public void GetFechaNacimiento(DateTime fechaNacimiento)
+        public void SetFechaNacimiento(DateTime fechaNacimiento)
         {
             this.fechaNacimiento = fechaNacimiento;
         }

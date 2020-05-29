@@ -19,7 +19,6 @@ namespace PapersPlease
 {
     public partial class MainWindow : Window
     {
-        ListaPasaportes p;
         DirectoryInfo dir;
         FileInfo[] infoFicheros;
         string partida;
@@ -29,7 +28,6 @@ namespace PapersPlease
         public MainWindow()
         {
             InitializeComponent();
-            p = new ListaPasaportes();
 
             dir = new DirectoryInfo(Environment.CurrentDirectory);
             infoFicheros = dir.GetFiles();
@@ -83,11 +81,10 @@ namespace PapersPlease
         {
             SetPartida(partidas.SelectedItem.ToString());
 
-            this.p.Cargar(GetPartida());
+            PantallaJuego p = new PantallaJuego(GetPartida() + ".txt");
 
-            File.Delete(GetPartida()+".txt");
+            File.Delete(GetPartida() + ".txt");
 
-            PantallaJuego p = new PantallaJuego();
             p.Show();
 
             this.Close();
