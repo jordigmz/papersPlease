@@ -67,7 +67,7 @@ namespace PapersPlease
         {
             if (p.CompararPasaportes(pCorrecto, pError) != jugadorResultado)
             {
-                SetAhorros(GetAhorros()-5);
+                this.SetAhorros(this.GetAhorros()-5);
                 MessageBox.Show("Nota: Amonestación por mala gestión. (-5$)");
             }
             

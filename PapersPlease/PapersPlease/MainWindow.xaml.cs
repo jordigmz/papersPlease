@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.VisualBasic;
+using System.Media;
 
 namespace PapersPlease
 {
@@ -24,10 +25,15 @@ namespace PapersPlease
         string partida;
         string ultimaPartida;
         DateTime mayor;
+        SoundPlayer reproductor;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            reproductor = new SoundPlayer(Directory.GetCurrentDirectory() + @"\imagenes\assets\sonidos\inicio.mp3");
+            reproductor.Load();
+            reproductor.Play();
 
             dir = new DirectoryInfo(Environment.CurrentDirectory);
             infoFicheros = dir.GetFiles();
@@ -37,7 +43,7 @@ namespace PapersPlease
 
             foreach (FileInfo infoUnFich in infoFicheros)
             {
-                if (infoUnFich.Name.Contains(".txt"))
+                if (infoUnFich.Name.Contains(".txt") && !infoUnFich.Name.Contains("Correctos") && !infoUnFich.Name.Contains("Erroneos"))
                 {
                     partidas.Items.Add(infoUnFich.Name.Substring(0, infoUnFich.Name.Length - 4));
 
@@ -72,6 +78,7 @@ namespace PapersPlease
         private void NuevaPartida_Click(object sender, RoutedEventArgs e)
         {
             PantallaJuego p = new PantallaJuego();
+
             p.Show();
 
             this.Close();
@@ -84,6 +91,8 @@ namespace PapersPlease
             PantallaJuego p = new PantallaJuego(GetPartida() + ".txt");
 
             File.Delete(GetPartida() + ".txt");
+            File.Delete(GetPartida() + "Correctos.txt");
+            File.Delete(GetPartida() + "Erroneos.txt");
 
             p.Show();
 

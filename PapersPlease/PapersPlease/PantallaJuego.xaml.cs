@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.VisualBasic;
+using System.Media;
 
 namespace PapersPlease
 {
@@ -72,6 +73,8 @@ namespace PapersPlease
             pasaporteTemp = "";
             visadoTemp = "";
 
+            news.Content = "Día " + j.GetContadorDias() + " (" + j.GetAhorros() + "$)";
+
             SiguientePersonaje();
 
             contPersonajes = 1;
@@ -79,12 +82,10 @@ namespace PapersPlease
 
         public void SiguientePersonaje()
         {
-            if(j.GetPerdido())
+            if (j.GetPerdido())
             {
                 this.Close();
             }
-
-            news.Content = "Día " + j.GetContadorDias() + " (" + j.GetAhorros() + "$)";
 
             if (contPersonajes == 4)
             {
@@ -173,10 +174,12 @@ namespace PapersPlease
 
             j.Amonestar(decision, listaPasaportes[aleatorio], new Pasaporte(personajeTemp.Replace("/", @"\"), pasaporteTemp.Replace("/", @"\"), visadoTemp.Replace("/", @"\"), nombreError.Content.ToString(), apellidoError.Content.ToString(), dniError.Content.ToString(), Convert.ToDateTime(fechaNError.Content.ToString())));
 
-            SiguientePersonaje();
+            news.Content = "Día " + j.GetContadorDias() + " (" + j.GetAhorros() + "$)";
 
             listaPasaportes.RemoveAt(aleatorio);
             listaPasaportesErroneos.RemoveAt(aleatorio);
+
+            SiguientePersonaje();
 
             contPersonajes++;
         }
@@ -202,7 +205,7 @@ namespace PapersPlease
                 } while (inicio.GetPartida() == null);
             }
 
-            p.Guardar(inicio.GetPartida(), listaPasaportes, listaPasaportesErroneos);
+            p.Guardar(inicio.GetPartida(), j.GetAhorros().ToString(), j.GetContadorDias().ToString(), listaPasaportes, listaPasaportesErroneos);
 
             this.Close();
         }

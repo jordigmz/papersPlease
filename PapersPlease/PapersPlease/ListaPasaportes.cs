@@ -152,14 +152,14 @@ namespace PapersPlease
                     if (linea != null)
                     {
                         AddErroneo(new Pasaporte(
-                        Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\error\p" + cont2 + ".png",
-                        Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\error\d" + cont2 + ".png",
-                        Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\error\d" + cont2 + ".png",
-                        nombreTemp,
-                        apellidoTemp,
-                        dniTemp,
-                        Convert.ToDateTime(fechaNacimientoTemp)
-                    ));
+                            Directory.GetCurrentDirectory() + @"\imagenes\assets\personajes\error\p" + cont2 + ".png",
+                            Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\error\d" + cont2 + ".png",
+                            Directory.GetCurrentDirectory() + @"\imagenes\assets\documentacion\error\d" + cont2 + ".png",
+                            nombreTemp,
+                            apellidoTemp,
+                            dniTemp,
+                            Convert.ToDateTime(fechaNacimientoTemp)
+                        ));
 
                         cont2++;
                     }
@@ -189,9 +189,11 @@ namespace PapersPlease
         {
             try
             {
+                string linea = "", personajeImagenTemp = "", pasaporteImagenTemp = "", visadoImagenTemp = "", nombreTemp = "", apellidoTemp = "", dniTemp = "", fechaNacimientoTemp = "";
+
                 StreamReader fr = File.OpenText(partida);
 
-                string linea = fr.ReadLine();
+                linea = fr.ReadLine();
                 if (linea != null)
                 {
                     j.SetNombreJugador(linea);
@@ -209,97 +211,133 @@ namespace PapersPlease
                     j.SetAhorros(Convert.ToInt32(linea));
                 }
 
-                foreach (Pasaporte p in pasaportes)
-                {
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetPersonajeImagen(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetPasaporteImagen(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetVisadoImagen(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetNombre(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetApellido(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetDni(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetFechaNacimiento(Convert.ToDateTime(linea));
-                    }
-                }
-
-                foreach (Pasaporte p in pasaportesErroneos)
-                {
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetPersonajeImagen(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetPasaporteImagen(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetVisadoImagen(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetNombre(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetApellido(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetDni(linea);
-                    }
-
-                    linea = fr.ReadLine();
-                    if (linea != null)
-                    {
-                        p.SetFechaNacimiento(Convert.ToDateTime(linea));
-                    }
-                }
-
                 fr.Close();
+                
+                StreamReader fC = File.OpenText(partida.Substring(0, partida.Length - 4) + "Correctos.txt");
+
+                do
+                {
+                    linea = fC.ReadLine();
+                    if (linea != null)
+                    {
+                        personajeImagenTemp = linea;
+                    }
+
+                    linea = fC.ReadLine();
+                    if (linea != null)
+                    {
+                        pasaporteImagenTemp = linea;
+                    }
+
+                    linea = fC.ReadLine();
+                    if (linea != null)
+                    {
+                        visadoImagenTemp = linea;
+                    }
+
+                    linea = fC.ReadLine();
+                    if (linea != null)
+                    {
+                        nombreTemp = linea;
+                    }
+
+                    linea = fC.ReadLine();
+                    if (linea != null)
+                    {
+                        apellidoTemp = linea;
+                    }
+
+                    linea = fC.ReadLine();
+                    if (linea != null)
+                    {
+                        dniTemp = linea;
+                    }
+
+                    linea = fC.ReadLine();
+                    if (linea != null)
+                    {
+                        fechaNacimientoTemp = linea;
+                    }
+
+                    if (linea != null)
+                    {
+                        AddCorrecto(new Pasaporte(
+                            personajeImagenTemp,
+                            pasaporteImagenTemp,
+                            visadoImagenTemp,
+                            nombreTemp,
+                            apellidoTemp,
+                            dniTemp,
+                            Convert.ToDateTime(fechaNacimientoTemp)
+                        ));
+                    }
+
+                } while (linea != null);
+
+                fC.Close();
+
+                StreamReader fE = File.OpenText(partida.Substring(0, partida.Length - 4) + "Erroneos.txt");
+
+                do
+                {
+                    linea = fE.ReadLine();
+                    if (linea != null)
+                    {
+                        personajeImagenTemp = linea;
+                    }
+
+                    linea = fE.ReadLine();
+                    if (linea != null)
+                    {
+                        pasaporteImagenTemp = linea;
+                    }
+
+                    linea = fE.ReadLine();
+                    if (linea != null)
+                    {
+                        visadoImagenTemp = linea;
+                    }
+
+                    linea = fE.ReadLine();
+                    if (linea != null)
+                    {
+                        nombreTemp = linea;
+                    }
+
+                    linea = fE.ReadLine();
+                    if (linea != null)
+                    {
+                        apellidoTemp = linea;
+                    }
+
+                    linea = fE.ReadLine();
+                    if (linea != null)
+                    {
+                        dniTemp = linea;
+                    }
+
+                    linea = fE.ReadLine();
+                    if (linea != null)
+                    {
+                        fechaNacimientoTemp = linea;
+                    }
+
+                    if (linea != null)
+                    {
+                        AddErroneo(new Pasaporte(
+                            personajeImagenTemp,
+                            pasaporteImagenTemp,
+                            visadoImagenTemp,
+                            nombreTemp,
+                            apellidoTemp,
+                            dniTemp,
+                            Convert.ToDateTime(fechaNacimientoTemp)
+                        ));
+                    }
+
+                } while (linea != null);
+
+                fE.Close();
             }
             catch (FileNotFoundException)
             {
@@ -315,39 +353,47 @@ namespace PapersPlease
             }
         }
 
-        public void Guardar(string partida, List<Pasaporte> pCorrecto, List<Pasaporte> pErroneo)
+        public void Guardar(string partida, string ahorros, string dias, List<Pasaporte> pCorrecto, List<Pasaporte> pErroneo)
         {
             try
-            {  
+            {
                 StreamWriter fw = File.CreateText(partida + ".txt");
 
                 fw.WriteLine(j.GetNombreJugador());
-                fw.WriteLine(j.GetContadorDias());
-                fw.WriteLine(j.GetAhorros());
+                fw.WriteLine(ahorros);
+                fw.WriteLine(dias);
+
+                fw.Close();
+
+                StreamWriter fC = File.CreateText(partida + "Correctos.txt");
 
                 foreach (Pasaporte p in pCorrecto)
                 {
-                    fw.WriteLine(p.GetPersonajeImagen());
-                    fw.WriteLine(p.GetPasaporteImagen());
-                    fw.WriteLine(p.GetVisadoImagen());
-                    fw.WriteLine(p.GetNombre());
-                    fw.WriteLine(p.GetApellido());
-                    fw.WriteLine(p.GetDni());
-                    fw.WriteLine(p.GetFechaNacimiento().ToString());
+                    fC.WriteLine(p.GetPersonajeImagen());
+                    fC.WriteLine(p.GetPasaporteImagen());
+                    fC.WriteLine(p.GetVisadoImagen());
+                    fC.WriteLine(p.GetNombre());
+                    fC.WriteLine(p.GetApellido());
+                    fC.WriteLine(p.GetDni());
+                    fC.WriteLine(p.GetFechaNacimiento().ToString());
                 }
+
+                fC.Close();
+
+                StreamWriter fE = File.CreateText(partida + "Erroneos.txt");
 
                 foreach (Pasaporte p in pErroneo)
                 {
-                    fw.WriteLine(p.GetPersonajeImagen());
-                    fw.WriteLine(p.GetPasaporteImagen());
-                    fw.WriteLine(p.GetVisadoImagen());
-                    fw.WriteLine(p.GetNombre());
-                    fw.WriteLine(p.GetApellido());
-                    fw.WriteLine(p.GetDni());
-                    fw.WriteLine(p.GetFechaNacimiento().ToString());
+                    fE.WriteLine(p.GetPersonajeImagen());
+                    fE.WriteLine(p.GetPasaporteImagen());
+                    fE.WriteLine(p.GetVisadoImagen());
+                    fE.WriteLine(p.GetNombre());
+                    fE.WriteLine(p.GetApellido());
+                    fE.WriteLine(p.GetDni());
+                    fE.WriteLine(p.GetFechaNacimiento().ToString());
                 }
 
-                fw.Close();
+                fE.Close();
             }
             catch (FileNotFoundException)
             {
